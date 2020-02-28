@@ -1,0 +1,92 @@
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="container-fluid">
+    <div class="text-center ">
+        <h1>Curriculum Vitae | <%= @resume['basics']['name']%></h1>
+    </div>
+</div>
+
+<div class="container-sm-4  ml-4">
+    <h2><i class="far fa-user mb-4"> Personal</i></h2>
+    <div class="text-align-left">
+        <h5>Contact & Social</h5>
+    </div>
+    <div class="row pl-5 pb-4">
+        <div class="far fa-envelope pr-2 border-right border-dark" style="color:steelblue"> E-Mail
+            <a href="mailto:<%= @resume['basics']['email']%>"
+                style="color: firebrick;"><%= @resume['basics']['email']%></a>
+        </div>
+        <div class="fab fa-github pl-2 pr-2 border-right border-dark" style="color:steelblue"> Github
+            <a href="<%= @resume['basics']['github']%>"
+                style="color: firebrick;"><%= @resume['basics']['username']%></a>
+        </div>
+        <div class="fab fa-linkedin pl-2" style="color:steelblue">
+            <a href="<%= @resume['basics']['linkedin']%>" style="color: steelblue;">LinkedIn Profile</a>
+        </div>
+    </div>
+    <div class="d-flex pr-5 pl-5">
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th scope="col">Whoami</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Phone <i class='fas fa-phone'></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= @resume['basics']['name']%> - <div class=" fa fa-birthday-cake"> <span
+                                style="color: firebrick;"><%= @resume['basics']['birthdate']%></span></div>
+                    </td>
+                    <td>
+                        <div class="fa fa-map-marker"> <span
+                                style="color: firebrick;"><%= @resume['basics']['location']['address']%></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="color: firebrick;"><%= @resume['basics']['phone']%></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2><i class="fa fa-industry mb-4"> Professionnal Experience</i></h2>
+
+    <%@resume['work'].each do |work_item| %>
+    <h3 class="mb-4"><%=work_item['position']%></h3>
+    <div class="row mb-4">
+        <div class="fa fa-calendar mb-2 ml-4"> From : <span style="color: firebrick;"><%=work_item['startDate']%></span>
+            until
+            <span style="color: firebrick;"><%=work_item['endDate']%></span></div>
+    </div>
+    <div class="row mb-4 ml-2">
+        <div class="fa fa-users mb-2">
+            <a href="<%=work_item['website']%>" style="color: steelblue;"><%= work_item['company']%></a>
+            - at <%=work_item['location']%>
+        </div>
+    </div>
+    <div>
+        <div class="row mb-4 ml-4">
+            <div class="col-1 align-self-center">
+                <i class="fa fa-info-circle" style="font-size:36px; color:darkblue;"></i>
+            </div>
+            <div class="col-11 border-left">
+                <p><i>Description</i></p>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <% end %>
+
+    <!-- <div class="row">
+            <div class="col-md-4">
+                <%= @resume%>
+            </div>
+        </div> -->
+
+</div>
